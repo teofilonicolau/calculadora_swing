@@ -34,14 +34,14 @@ public class CalculadoraSwing {
         frame.add(new JScrollPane(resultados), BorderLayout.CENTER);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(5, 4));  // Aumentei o número de linhas para incluir o botão "CE"
+        panel.setLayout(new GridLayout(5, 4));
 
         String[] buttons = {
                 "7", "8", "9", "/",
                 "4", "5", "6", "*",
                 "1", "2", "3", "-",
                 "0", ".", "=", "+",
-                "CE"  // Adicionado o botão "CE"
+                "CE"
         };
 
         for (String buttonText : buttons) {
@@ -82,7 +82,7 @@ public class CalculadoraSwing {
 
     private void calcularResultado() {
         if (display != null) {
-            String textoDisplay = display.getText().trim(); // Remove espaços em branco no início e no final
+            String textoDisplay = display.getText().trim();
 
             if (!textoDisplay.isEmpty()) {
                 double segundoNumero = Double.parseDouble(textoDisplay);
@@ -112,13 +112,13 @@ public class CalculadoraSwing {
                         break;
                 }
 
-                // Adiciona o resultado ao JTextArea
+
                 resultados.append(display.getText() + "\n");
 
                 operacaoPendente = null;
             } else {
-                // Lidar com a situação em que o display está vazio
-                // Por exemplo, exibir uma mensagem de erro ou não fazer nada
+                // Lidar com a situaçso em que o display esta vazio
+                // Por exemplo, exibir uma mensagem de erro ou nao fazer nada
             }
         }
     }
