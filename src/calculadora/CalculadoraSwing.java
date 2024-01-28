@@ -81,43 +81,45 @@ public class CalculadoraSwing {
     }
 
     private void calcularResultado() {
-        String textoDisplay = display.getText().trim(); // Remove espaços em branco no início e no final
+        if (display != null) {
+            String textoDisplay = display.getText().trim(); // Remove espaços em branco no início e no final
 
-        if (!textoDisplay.isEmpty()) {
-            double segundoNumero = Double.parseDouble(textoDisplay);
+            if (!textoDisplay.isEmpty()) {
+                double segundoNumero = Double.parseDouble(textoDisplay);
 
-            switch (operacaoPendente) {
-                case "+":
-                    display.setText(String.valueOf(primeiroNumero + segundoNumero));
-                    break;
-                case "-":
-                    display.setText(String.valueOf(primeiroNumero - segundoNumero));
-                    break;
-                case "*":
-                    display.setText(String.valueOf(primeiroNumero * segundoNumero));
-                    break;
-                case "/":
-                    if (segundoNumero != 0) {
-                        display.setText(String.valueOf(primeiroNumero / segundoNumero));
-                    } else {
-                        display.setText("Erro");
-                    }
-                    break;
-                case "%":
-                    display.setText(String.valueOf(primeiroNumero * segundoNumero / 100));
-                    break;
-                case "√":
-                    display.setText(String.valueOf(Math.sqrt(primeiroNumero)));
-                    break;
+                switch (operacaoPendente) {
+                    case "+":
+                        display.setText(String.valueOf(primeiroNumero + segundoNumero));
+                        break;
+                    case "-":
+                        display.setText(String.valueOf(primeiroNumero - segundoNumero));
+                        break;
+                    case "*":
+                        display.setText(String.valueOf(primeiroNumero * segundoNumero));
+                        break;
+                    case "/":
+                        if (segundoNumero != 0) {
+                            display.setText(String.valueOf(primeiroNumero / segundoNumero));
+                        } else {
+                            display.setText("Erro");
+                        }
+                        break;
+                    case "%":
+                        display.setText(String.valueOf(primeiroNumero * segundoNumero / 100));
+                        break;
+                    case "√":
+                        display.setText(String.valueOf(Math.sqrt(primeiroNumero)));
+                        break;
+                }
+
+                // Adiciona o resultado ao JTextArea
+                resultados.append(display.getText() + "\n");
+
+                operacaoPendente = null;
+            } else {
+                // Lidar com a situação em que o display está vazio
+                // Por exemplo, exibir uma mensagem de erro ou não fazer nada
             }
-
-            // Adiciona o resultado ao JTextArea
-            resultados.append(display.getText() + "\n");
-
-            operacaoPendente = null;
-        } else {
-            // Lidar com a situação em que o display está vazio
-            // Por exemplo, exibir uma mensagem de erro ou não fazer nada
         }
     }
 
